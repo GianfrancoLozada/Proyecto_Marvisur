@@ -1,39 +1,30 @@
 <?php
 
 include("conexion.php");
+<td><label>Cod. Destinatario</label></td><td><input type="Char" value=" " maxlength="11" name="Co_De" maxlength="40" size="10"></td>
 
-//$cod =  $_POST["txtcodigo"];
-//$edad =  $_POST["txtedad"];
-//$nom =  $_POST["txtnombre"];
-//$tel =  $_POST["txttelefono"];
-$placa = $_POST["txtplaca"];
-$lic = $_POST['lc'];
-$codRem = $_POST['codRem'];
-$codDest = $_POST['codDest'];
-$codEnc = $_POST['codEnc'];
-$codRuta = $_POST['codRut'];
-$codFlete = $_POST['codFlet'];
-$depSal = $_POST['depSal'];
-$proSal = $_POST['provSal'];
-$distSal = $_POST['distSal'];
-$domSal = $_POST['domSal'];
-$depLleg = $_POST['depLleg'];
-$proLleg = $_POST['provLleg'];
-$distLleg = $_POST['distLleg']; 
-$domLleg = $_POST['domLleg'];
-$valFlete = $_POST['valFlet'];
+<td><label>Nombre Destinatario</label></td><td><input type="Varchar" value="" maxlength="11" name="No_De" maxlength="40" size="10"></td>
 
-	if($_SERVER['REQUEST_METHOD'] == "POST" and isset( $_POST['limpiardatos']))
-	{
-		header("Location: principal.php");
-	}
+
+
+</tr>
+<td><label>Telefono Destinatario</label></td><td><input type="Char" value="" maxlength="11" name="Te_De" maxlength="40" size="10"></td>
+<tr>
+
+$CodigoDestinatario = $_POST["Co_De"];
+$NombreDestinatario = $_POST['No_De'];
+$TelefonoDestinatario = $_POST['Te_De'];
+
+
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset( $_POST['limpiardatos']))
+{
+	header("Location: principal.php");
+}
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset( $_POST['grabardatos']))
-	
-	{
-    $sqlgrabar = "CALL sp_insert_guia_rem ('$placa', '$lic', '$codRem', '$codDest', '$codEnc', '$codRuta', '$codFlete', '$depSal', '$proSal', '$distSal', '$domSal', '$depLleg', '$proLleg', '$distLleg', '$domLleg', '$valFlete')";
-	//$sqlgrabar = "INSERT INTO clientes(codigo, nombre, edad, telefono) values ('$cod','$nom','$edad','$tel')";
 
+{
+$sqlgrabar = "CALL sp_insert_guia_rem ('$CodigoDestinatario', '$NombreDestinatario', '$TelefonoDestinatario')";
 if(mysqli_query($conn,$sqlgrabar))
 {
 	header("Location: principal.php");
@@ -45,11 +36,10 @@ if(mysqli_query($conn,$sqlgrabar))
 		
 	}
 	
-	if($_SERVER['REQUEST_METHOD'] == "POST" and isset( $_POST['modificardatos']))
+	if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificardatos']))
 	
 	{
-			$sqlmodificar = "UPDATE clientes SET nombre='$nom',edad='$edad',telefono='$tel' WHERE codigo=$cod";
-
+	$sqlmodificar = "CALL sp_update_guia_rem('$CodigoDestinatario', '$NombreDestinatario', '$TelefonoDestinatario')";
 if(mysqli_query($conn,$sqlmodificar))
 {
 	header("Location: principal.php");
@@ -61,10 +51,10 @@ if(mysqli_query($conn,$sqlmodificar))
 		
 	}
 	
-	if($_SERVER['REQUEST_METHOD'] == "POST" and isset( $_POST['eliminardatos']))
+	if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['eliminardatos']))
 	
 	{
-			$sqleliminar = "DELETE FROM clientes WHERE codigo=$cod";
+			$sqleliminar = "CALL sp_delete_guia_rem('$CodigoDestinatario')";
 
 if(mysqli_query($conn,$sqleliminar))
 {
