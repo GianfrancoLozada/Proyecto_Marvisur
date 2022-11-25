@@ -681,3 +681,9 @@ BEGIN
 	INSERT INTO guia_de_remision (placa,licencia,codigo_rem,codigo_dest,codigo_enc,codigo_ruta,codigo_flete,departamento_salida,provincia_salida,distrito_salida,domicilio_salida,departamento_llegada,provincia_llegada,distrito_llegada,domicilio_llegada,valor_flete)
 	VALUES (_Placa,_Licencia,_CodigoRem,_CodigoDest,_CodigoEnc,_CodigoRuta,_CodigoFlete,_DepartamentoSalida,_ProvinciaSalida,_DistritoSalida,_DomicilioSalida,_DepartamentoLlegada,_ProvinciaLlegada,_DistritoLlegada,_DomicilioLlegada,_ValorFlete);
 END $
+
+
+Create procedure sp_select_guia()
+begin
+	SELECT * FROM Guia_de_remision;
+end

@@ -67,13 +67,19 @@ padding: 6px 4px;
 </tr>
 
 <tr><td colspan="16"align="center"><label>Registrar Nueva Guia de Remision </label></td></tr>
+
 <tr>
-	<td><label>Numero de Placa</label></td><td><input type="VARCHAR" value=" " maxlength="10" name="txtplaca" maxlength="40" size="10"></td>
+	<td><label>Codigo Guia de Remision a eliminar</label></td><td><input type="INT" value=" " maxlength="3	" name="guiaRem" maxlength="40" size="5"></td>
+
+</tr>
+<tr>
+	<td><label>Numero de Placa</label></td><td><input type="VARCHAR" value=" " maxlength="7" name="txtplaca" maxlength="40" size="10"></td>
 	<td><label>Licencia</label></td><td><input type="text" value="" maxlength="10" name="lc" maxlength="40" size="10"></td>
 	<td><label>Cod. Remitente</label></td><td><input type="text" value="" maxlength="50" name="codRem"></td>
 	<td><label>Cod. Destinatario</label></td><td><input type="text" value="" maxlength="11" size="11" name="codDest"></td>
 	<td><label>Cod. Encomienda</label></td><td><input type="text" value="" maxlength="50" name="codEnc"></td>
 	<td><label>Cod. Ruta</label></td><td><input type="text" value="" maxlength="9" size="10" name="codRut"></td>
+</tr>
 <tr>	
 	<td><label>Cod. Flete</label></td><td><input type="text" value="" maxlength="50" name="codFlet"></td>
 	<td><label>Dep. Salida</label></td><td><input type="text" value="" maxlength="9" size="10" name="depSal"></td>
@@ -84,7 +90,7 @@ padding: 6px 4px;
 </tr>
 <tr>
 	<td><label>Prov. LLegada</label></td><td><input type="text" value="" maxlength="50" name="provLleg"></td>
-	<td><label>Dist. LLegada</label></td><td><input type="text" value="" maxlength="9" size="10" name="distLleg"></td>
+	<td><label>Dist. LLegada</label></td><td><input type="text" value="" maxlength="15" size="10" name="distLleg"></td>
 	<td><label>Dom. LLegada</label></td><td><input type="text" value="" maxlength="50" name="domLleg"></td>
 	<td><label>Valor Flete</label></td><td><input type="text" value="" maxlength="9" size="10" name="valFlet"></td>
 </tr>
@@ -97,9 +103,10 @@ padding: 6px 4px;
 </td>
 </tr>
 
-<tr><td colspan="16"><label>Listado de Clientes </label></td></tr>
+<tr><td colspan="16"><label>Guias de Remision </label></td></tr>
 
 <tr>
+	<td><label>Codigo</label></td>
 	<td><label>Numero de Placa</label></td>
 	<td><label>Licencia</label></td>
 	<td><label>Cod. Remitente</label></td>
@@ -127,6 +134,7 @@ while($mostrar=mysqli_fetch_array($result))
 {
 ?>
 <tr> 
+	<td><?php echo $mostrar['nro_guia_remision'] ?>
 	<td><?php echo $mostrar['placa'] ?>
 	<td><?php echo $mostrar['licencia'] ?>
 	<td><?php echo $mostrar['codigo_rem'] ?>

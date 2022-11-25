@@ -75,7 +75,7 @@ padding: 6px 4px;
 	<td><label>Cantidad</label></td><td><input type="9" value=" " maxlength="9" name="CANTENCO" maxlength="40" size="9"></td>
 	<td><label>Unidad Medida</label></td><td><input type="char" value="" maxlength="15" name="UNIDADENCO" maxlength="40" size="15"></td>
 	<td><label>Peso</label></td><td><input type="Float" value=" " maxlength="7" name="PESOENCO" maxlength="40" size="7"></td>
-	<td><label>Unidad Peso</label></td><td><input type="CHAR" value=" " maxlength="15" name="PESOENCO" maxlength="40" size="15"></td>
+	<td><label>Unidad Peso</label></td><td><input type="CHAR" value=" " maxlength="15" name="UNIDAPESOENCO" maxlength="40" size="15"></td>
 	<td><label>Codigo Destinatario</label></td><td><input type="Char" value=" " maxlength="11" name="CODDESTENCO" maxlength="40" size="11"></td>
 	<td><label>Codigo Remitente</label></td><td><input type="Char" value=" " maxlength="11" name="CODREMENCO" maxlength="40" size="11"></td>
 	<td><label>Codigo Ruta</label></td><td><input type="INT" value=" " maxlength="9" name="CODRUTENCO" maxlength="40" size="9"></td>
