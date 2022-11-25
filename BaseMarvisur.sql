@@ -43,6 +43,8 @@ CREATE TABLE Vehiculo(
   PRIMARY KEY (Placa)
 )ENGINE = InnoDB;
 
+
+--BRAULIO--
 -- Tabla Conductor --
 CREATE TABLE Conductor(
   licencia CHAR(9) NOT NULL,
