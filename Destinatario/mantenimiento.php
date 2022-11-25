@@ -1,16 +1,6 @@
 <?php
 
 include("conexion.php");
-<td><label>Cod. Destinatario</label></td><td><input type="Char" value=" " maxlength="11" name="Co_De" maxlength="40" size="10"></td>
-
-<td><label>Nombre Destinatario</label></td><td><input type="Varchar" value="" maxlength="11" name="No_De" maxlength="40" size="10"></td>
-
-
-
-</tr>
-<td><label>Telefono Destinatario</label></td><td><input type="Char" value="" maxlength="11" name="Te_De" maxlength="40" size="10"></td>
-<tr>
-
 $CodigoDestinatario = $_POST["Co_De"];
 $NombreDestinatario = $_POST['No_De'];
 $TelefonoDestinatario = $_POST['Te_De'];
