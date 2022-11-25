@@ -64,19 +64,25 @@ padding: 6px 4px;
 
 <tr>
 
-<td colspan="3"align="center"><label>Tipo_Destinatario</label></td>
+<td colspan="5"align="center"><label>Vehiculo</label></td>
 </tr>
 
-<tr><td colspan="3"align="center"><label>Registrar Nuevo Tipo de Destinatario </label></td></tr>
+<tr><td colspan="5"align="center"><label>Registrar Nuevo Vehiculo </label></td></tr>
 <tr>
-	<td><label>Cod. Destinatario</label></td><td><input type="Char" value=" " maxlength="11" name="Co_De" maxlength="40" size="10"></td>
+	<td><label> Placa </label></td><td><input type="VarChar" value=" " maxlength="7" name="Pl" maxlength="40" size="7"></td>
 
-	<td><label>Tipo Destinatario</label></td><td><input type="Char" value="" maxlength="3" name="Ti_De" maxlength="40" size="10"></td>
+	<td><label> N° Certificado</label></td><td><input type="Char" value="" maxlength="8" name="N_Ce" maxlength="40" size="8"></td>
+
+	<tr>
+		<td><label> Configuración Vehicular</label></td><td><input type="Char" value="" maxlength="3" name="Co_Ve" maxlength="40" size="3"></td>
+
+		<td><label> Marca </label></td><td><input type="VarChar" value="" maxlength="20" name="Ma" maxlength="40" size="20"></td>
+	</tr>
 
 
 </tr>
 
-<tr><td colspan="3" align="center">
+<tr><td colspan="5" align="center">
 <input type="submit" value="Limpiar" name="limpiardatos" >
 <input type="submit" value="Ingresar" name="grabardatos" >
 <input type="submit" value="Modificar" name="modificardatos" >
@@ -84,25 +90,28 @@ padding: 6px 4px;
 </td>
 </tr>
 
-<tr><td colspan="3"><label>Listado de Tipos de Destinatarios </label></td></tr>
+<tr><td colspan="5"><label>Listado de Conductores</label></td></tr>
 
 <tr>
-	<td><label>Código Destinatario</label></td>
-	<td><label>Tipo</label></td>
-
+	<td><label>Placa</label></td>
+	<td><label>N° Certificado</label></td>
+	<td><label>Configuración Vehicular</label></td>
+	<td><label>Marca</label></td>
 </tr>
 
 
 <?php 
-    $sql="SELECT * FROM Destinatario";
+    $sql="SELECT * FROM Vehiculo";
     $result=mysqli_query($conn,$sql);
 
 while($mostrar=mysqli_fetch_array($result))
 {
 ?>
 <tr> 
-	<td><?php echo $mostrar['codigo_dest'] ?>
-	<td><?php echo $mostrar['tipo_dest'] ?>
+	<td><?php echo $mostrar['placa'] ?>
+	<td><?php echo $mostrar['certificado'] ?>
+	<td><?php echo $mostrar['conf_vehicular'] ?>
+	<td><?php echo $mostrar['marca'] ?>
 
 
 </tr>

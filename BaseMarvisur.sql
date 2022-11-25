@@ -2,6 +2,7 @@ CREATE DATABASE GuiaRemisionMarvisur1;
 
 USE GuiaRemisionMarvisur1;
 
+--Gianfranco--
 -- Tabla Destinatario
 CREATE TABLE Destinatario(
   codigo_dest CHAR(11) NOT NULL,

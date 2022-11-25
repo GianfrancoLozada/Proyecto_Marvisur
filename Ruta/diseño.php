@@ -72,9 +72,12 @@ padding: 6px 4px;
 	<td><label>Codigo Ruta</label></td><td><input type="INT" value=" " maxlength="9" name="CODRUT" maxlength="40" size="9"></td>
 	<td><label>Fecha Salida</label></td><td><input type="DATE" value="28-11-2022"name="FECHARUTSALI" ></td>
 	<td><label>Nombre Ruta</label></td><td><input type="varchar" value="" maxlength="25" name="NOMRUT" maxlength="40" size="25"></td>
-	<td><label>Hora Salida</label></td><td><input type="Char" value=" " maxlength="5" name="HORASALIDARUT" maxlength="40" size="5"></td>
-	<td><label>Licencia</label></td><td><input type="char" value="" maxlength="9" name="LICENRUT" maxlength="40" size="9"></td>
-	<td><label>Placa</label></td><td><input type="Varchar" value=" " maxlength="7" name="LICENRUT" maxlength="40" size="7"></td>
+
+	<tr>
+		<td><label>Hora Salida</label></td><td><input type="Char" value=" " maxlength="5" name="HORASALIDARUT" maxlength="40" size="5"></td>
+		<td><label>Licencia</label></td><td><input type="char" value="" maxlength="9" name="LICENRUT" maxlength="40" size="9"></td>
+		<td><label>Placa</label></td><td><input type="Varchar" value=" " maxlength="7" name="LICENRUT" maxlength="40" size="7"></td>
+	</tr>
 </tr>
 
 <tr><td colspan="4" align="center">

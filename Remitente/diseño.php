@@ -64,24 +64,20 @@ padding: 6px 4px;
 
 <tr>
 
-<td colspan="4"align="center"><label>Destinatario</label></td>
+<td colspan="6"align="center"><label>Remitente</label></td>
 </tr>
 
-<tr><td colspan="4"align="center"><label>Registrar Nuevo Destinatario </label></td></tr>
+<tr><td colspan="6"align="center"><label>Registrar Nuevo Remitente </label></td></tr>
 <tr>
-	<td><label>Cod. Destinatario</label></td><td><input type="Char" value=" " maxlength="11" name="Co_De" maxlength="40" size="10"></td>
+	<td><label>Cod. Remitente</label></td><td><input type="Char" value=" " maxlength="11" name="Co_Re" maxlength="40" size="11"></td>
 
-	<td><label>Nombre Destinatario</label></td><td><input type="Varchar" value="" maxlength="11" name="No_De" maxlength="40" size="10"></td>
+	<td><label>Nombre Remitente</label></td><td><input type="Varchar" value="" maxlength="30" name="No_Re" maxlength="40" size="30"></td>
 
+	<td><label>Teléfono Remitente</label></td><td><input type="char" value="" maxlength="9" name="Te_Re" maxlength="40" size="9"></td>
 	
-
-</tr>
-	<td><label>Telefono Destinatario</label></td><td><input type="Char" value="" maxlength="11" name="Te_De" maxlength="40" size="10"></td>
-<tr>
-
 </tr>
 
-<tr><td colspan="4" align="center">
+<tr><td colspan="6" align="center">
 <input type="submit" value="Limpiar" name="limpiardatos" >
 <input type="submit" value="Ingresar" name="grabardatos" >
 <input type="submit" value="Modificar" name="modificardatos" >
@@ -89,26 +85,26 @@ padding: 6px 4px;
 </td>
 </tr>
 
-<tr><td colspan="4"><label>Listado de Destinatarios </label></td></tr>
+<tr><td colspan="6"><label>Listado de Remitentes </label></td></tr>
 
 <tr>
-	<td><label>Código Destinatario</label></td>
+	<td><label>Código Remitente</label></td>
 	<td><label>Nombre</label></td>
-	<td><label>Telefono</label></td>
+	<td><label>Teléfono</label></td>
 </tr>
 
 
 <?php 
-    $sql="SELECT * FROM Destinatario";
+    $sql="SELECT * FROM Remitente";
     $result=mysqli_query($conn,$sql);
 
 while($mostrar=mysqli_fetch_array($result))
 {
 ?>
 <tr> 
-	<td><?php echo $mostrar['codigo_dest'] ?>
-	<td><?php echo $mostrar['nombre_dest'] ?>
-	<td><?php echo $mostrar['telf_dest'] ?>
+	<td><?php echo $mostrar['codigo_rem'] ?>
+	<td><?php echo $mostrar['nombre_rem'] ?>
+	<td><?php echo $mostrar['telf_rem'] ?>
 
 
 </tr>
