@@ -72,9 +72,6 @@ padding: 6px 4px;
 	<td><label>Cod. Destinatario</label></td><td><input type="Char" value=" " maxlength="11" name="Co_De" maxlength="40" size="10"></td>
 
 	<td><label>Nombre Destinatario</label></td><td><input type="Varchar" value="" maxlength="40" name="No_De" maxlength="40" size="10"></td>
-
-	
-
 </tr>
 	<td><label>Telefono Destinatario</label></td><td><input type="Char" value="" maxlength="30" name="Te_De" maxlength="40" size="10"></td>
 <tr>
