@@ -91,7 +91,6 @@ padding: 6px 4px;
     </div>
   </div>
 </nav>
-
 <center>
 <form name="Mantenimiento" action="mantenimiento.php" method="post">
 <table border="1">
