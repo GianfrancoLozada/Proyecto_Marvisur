@@ -105,8 +105,6 @@ while($mostrar=mysqli_fetch_array($result))
 	<td><?php echo $mostrar['codigo_rem'] ?>
 	<td><?php echo $mostrar['nombre_rem'] ?>
 	<td><?php echo $mostrar['telf_rem'] ?>
-
-
 </tr>
 <?php
 }
