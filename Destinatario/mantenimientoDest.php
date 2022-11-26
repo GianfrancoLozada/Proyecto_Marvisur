@@ -54,7 +54,6 @@ if(mysqli_query($conn,$sqleliminar))
 	echo "Error: " .$sql."<br>".mysql_error($conn);
 }
 		
-		
 	}
 
 ?>
