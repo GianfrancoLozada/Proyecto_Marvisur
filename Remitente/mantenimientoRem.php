@@ -24,8 +24,7 @@ if(mysqli_query($conn,$sqlgrabar))
 {
 	echo "Error: " .$sql."<br>".mysql_error($conn);
 }
-		
-		
+			
 	}
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificardatosRem']))
