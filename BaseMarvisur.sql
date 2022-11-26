@@ -2,7 +2,6 @@ CREATE DATABASE GuiaRemisionMarvisur1;
 
 USE GuiaRemisionMarvisur1;
 
---Gianfranco--
 -- Tabla Destinatario
 CREATE TABLE Destinatario(
   codigo_dest CHAR(11) NOT NULL,
@@ -44,8 +43,6 @@ CREATE TABLE Vehiculo(
   PRIMARY KEY (Placa)
 )ENGINE = InnoDB;
 
-
---BRAULIO--
 -- Tabla Conductor --
 CREATE TABLE Conductor(
   licencia CHAR(9) NOT NULL,
@@ -111,7 +108,7 @@ CREATE TABLE Guia_de_remision(
   domicilio_llegada CHAR(20) NOT NULL,
   valor_flete FLOAT NOT NULL,
   PRIMARY KEY (nro_guia_remision),
-  FOREIGN KEY (placa) REFERENCES Vehiculo(placa),
+
   FOREIGN KEY (licencia) REFERENCES Conductor(licencia),
   FOREIGN KEY (codigo_rem) REFERENCES Remitente(codigo_rem),
   FOREIGN KEY (codigo_dest) REFERENCES Destinatario(codigo_dest),
@@ -663,28 +660,303 @@ DELIMITER $
 CREATE PROCEDURE sp_insert_guia_rem
 	(in 
 		_Placa VARCHAR(7),
-        _Licencia CHAR(9),
-        _CodigoRem CHAR(11),
-        _CodigoDest CHAR(11),
-        _CodigoEnc INT,
-        _CodigoRuta INT,
-        _CodigoFlete INT,
-        _DepartamentoSalida CHAR(15),
-        _ProvinciaSalida CHAR(15),
-        _DistritoSalida CHAR(15),
-        _DomicilioSalida CHAR(20),
-        _DepartamentoLlegada CHAR(15),
-        _ProvinciaLlegada CHAR(15),
-        _DistritoLlegada CHAR(15),
-        _DomicilioLlegada CHAR(20),
-        _ValorFlete FLOAT)
+    _Licencia CHAR(9),
+    _CodigoRem CHAR(11),
+    _CodigoDest CHAR(11),
+    _CodigoEnc INT,
+    _CodigoRuta INT,
+    _CodigoFlete INT,
+    _DepartamentoSalida CHAR(15),
+    _ProvinciaSalida CHAR(15),
+    _DistritoSalida CHAR(15),
+    _DomicilioSalida CHAR(20),
+    _DepartamentoLlegada CHAR(15),
+    _ProvinciaLlegada CHAR(15),
+    _DistritoLlegada CHAR(15),
+    _DomicilioLlegada CHAR(20),
+    _ValorFlete FLOAT)
 BEGIN
 	INSERT INTO guia_de_remision (placa,licencia,codigo_rem,codigo_dest,codigo_enc,codigo_ruta,codigo_flete,departamento_salida,provincia_salida,distrito_salida,domicilio_salida,departamento_llegada,provincia_llegada,distrito_llegada,domicilio_llegada,valor_flete)
 	VALUES (_Placa,_Licencia,_CodigoRem,_CodigoDest,_CodigoEnc,_CodigoRuta,_CodigoFlete,_DepartamentoSalida,_ProvinciaSalida,_DistritoSalida,_DomicilioSalida,_DepartamentoLlegada,_ProvinciaLlegada,_DistritoLlegada,_DomicilioLlegada,_ValorFlete);
 END $
 
 
-Create procedure sp_select_guia()
+
+
+
+DELIMITER $
+CREATE PROCEDURE sp_update_guia_rem
+	(
+		in _nGuiaRem INT,
+		in _Placa VARCHAR(7),
+		in _Licencia CHAR(9),
+        in _CodigoRem CHAR(11),
+        in _CodigoDest CHAR(11),
+        in _CodigoEnc INT,
+        in _CodigoRuta INT,
+        in _CodigoFlete INT,
+        in _DepartamentoSalida CHAR(15),
+        in _ProvinciaSalida CHAR(15),
+        in _DistritoSalida CHAR(15),
+        in _DomicilioSalida CHAR(20),
+        in _DepartamentoLlegada CHAR(15),
+        in _ProvinciaLlegada CHAR(15),
+        in _DistritoLlegada CHAR(15),
+        in _DomicilioLlegada CHAR(20),
+        in _ValorFlete FLOAT
+	)
+BEGIN
+	UPDATE guia_de_remision
+    SET placa = _Placa,
+		licencia = _Licencia,
+        codigo_rem = _CodigoRem,
+        codigo_dest = _CodigoDest,
+        codigo_enc = _CodigoEnc,
+        codigo_ruta = _CodigoRuta,
+        codigo_flete = _CodigoFlete,
+        departamento_salida = _DepartamentoSalida,
+        provincia_salida = _ProvinciaSalida,
+        distrito_salida = _DistritoSalida,
+        domicilio_salida = _DomicilioSalida,
+        departamento_llegada = _DepartamentoLlegada,
+        provincia_llegada = _ProvinciaLlegada,
+        distrito_llegada = _DistritoLlegada,
+        domicilio_llegada = _DomicilioLlegada,
+        valor_flete = _ValorFlete,
+        nro_guia_remision = _nGuiaRem
+	WHERE nro_guia_remision = _nGuiaRem;
+END $
+
+
+
+DELIMITER $
+CREATE PROCEDURE sp_delete_guia_rem
+	(
+		in nGuiaRem INT
+    )
+BEGIN
+  DELETE FROM cuerpo_guia_remision WHERE nro_guia_remision = nGuiaRem;
+	DELETE FROM guia_de_remision WHERE nro_guia_remision = nGuiaRem;
+END $
+
+
+
+
+
+DELIMITER $
+CREATE PROCEDURE sp_select_guia()
+BEGIN
+	Select * from Guia_de_remision;
+END $
+
+DELIMITER $
+Create procedure sp_select_remitente()
 begin
-	SELECT * FROM Guia_de_remision;
-end
+	SELECT * FROM Remitente;
+end$
+
+DELIMITER $
+Create procedure sp_select_destinatario()
+begin
+	SELECT * FROM Destinatario;
+end$
+
+
+DELIMITER $
+Create Procedure sp_select_encomienda()
+begin 
+  SELECT * FROM Encomienda;
+end $
+
+
+-- DESTINATARIO --------------------------------------------------------------------------
+
+DELIMITER $
+CREATE PROCEDURE sp_insert_destinatario
+	(in 
+		_Codigo char(11), 
+        _Nombre varchar(30), 
+        _Telf char(9)
+	)
+BEGIN
+	INSERT INTO Destinatario VALUES (_Codigo, _Nombre, _Telf);
+    IF char_length(_Codigo) = 8 THEN 
+		INSERT INTO Tipo_Destinatario VALUES (_Codigo, 'DNI'); 
+	ELSEIF char_length(_Codigo) = 11 then 
+		INSERT INTO Tipo_Destinatario VALUES (_Codigo, 'RUC'); 
+	END IF;
+END $
+
+-- CALL sp_insert_destinatario('88888837', 'Romina Palomino', '993758566');
+
+DELIMITER $
+CREATE PROCEDURE sp_update_destinatario
+	(in 
+		_Codigo_dest char(11), 
+        _Nombre_dest varchar(30), 
+        _Telf_dest char(9)
+	)
+BEGIN
+	UPDATE Destinatario
+    SET 
+		codigo_dest = _Codigo_dest,
+        nombre_dest = _Nombre_dest,
+        telf_dest = _Telf_dest
+        WHERE codigo_dest = _Codigo_dest;
+END $
+
+-- CALL sp_update_destinatario('02736747', 'Ximena', '993758566');
+
+DELIMITER $
+CREATE PROCEDURE sp_delete_destinatario
+	(
+		in _Codigo_dest CHAR(11)
+    )
+BEGIN
+	DELETE FROM Destinatario WHERE codigo_dest = _Codigo_dest;
+END $
+
+-- CALL sp_delete_destinatario('17273894395');
+-- SELECT * FROM Destinatario;
+
+
+
+-- REMITENTE --------------------------------------------------------------------------
+DROP PROCEDURE sp_insert_remitente;
+DELIMITER $
+CREATE PROCEDURE sp_insert_remitente
+	(in 
+		_Codigo char(11), 
+        _Nombre varchar(30), 
+        _Telf char(9)
+	)
+BEGIN
+	INSERT INTO Remitente VALUES (_Codigo, _Nombre, _Telf);
+    IF char_length(_Codigo) = 8 THEN 
+		INSERT INTO tipo_remitente VALUES (_Codigo, 'DNI'); 
+	ELSEIF char_length(_Codigo) = 11 THEN 
+		INSERT INTO tipo_remitente VALUES (_Codigo, 'RUC'); 
+	END IF;
+END $
+
+-- CALL sp_insert_remitente('19279997999', 'Contix S.A.', '976911256');
+
+DELIMITER $
+CREATE PROCEDURE sp_update_remitente
+	(in 
+		_Codigo_rem char(11), 
+        _Nombre_rem varchar(30), 
+        _Telf_rem char(9)
+	)
+BEGIN
+	UPDATE Remitente
+    SET 
+		codigo_rem = _Codigo_rem,
+        nombre_rem = _Nombre_rem,
+        telf_rem = _Telf_rem
+        WHERE codigo_rem = _Codigo_rem;
+END $
+
+-- CALL sp_update_remitente('19279997999', 'Contix S.a.C', '976911256');
+
+DROP PROCEDURE sp_delete_remitente
+DELIMITER $
+CREATE PROCEDURE sp_delete_remitente
+	(
+		in _Codigo_rem CHAR(11)
+    )
+BEGIN
+  delete from Guia_de_remision where codigo_rem= _Codigo_rem;
+	delete from Tipo_Remitente where codigo_rem= _Codigo_rem;
+	DELETE FROM Remitente WHERE codigo_rem = _Codigo_rem;
+
+END $
+
+-- CALL sp_delete_remitente('10238759495');
+-- SELECT * FROM Remitente;
+
+
+-- VEHICULO --------------------------------------------------------------------------
+DROP PROCEDURE sp_insert_vehiculo;
+DELIMITER $
+CREATE PROCEDURE sp_insert_vehiculo
+	(in 
+		_Placa VARCHAR(7), 
+		_Certificado CHAR(8), 
+		_Conf_vehicular CHAR(3), 	
+        _Marca VARCHAR(20)
+	)
+BEGIN
+	INSERT INTO Vehiculo VALUES (_Placa, _Certificado, _Conf_vehicular, _Marca);
+END $
+
+-- CALL sp_insert_vehiculo('J4N-740', '38483848', 'C-3', 'Volvo');
+
+
+DELIMITER $
+CREATE PROCEDURE sp_update_vehiculo
+	(in 
+		_Placa VARCHAR(7), 
+		_Certificado CHAR(8), 
+		_Conf_vehicular CHAR(3), 	
+        _Marca VARCHAR(20)
+	)
+BEGIN
+	UPDATE Vehiculo
+    SET 
+		placa = _Placa,
+        certificado = _Certificado,
+        conf_vehicular = _Conf_vehicular,
+        marca = _Marca
+        WHERE placa = _Placa;
+END $
+
+
+
+
+
+
+
+-- CALL sp_update_vehiculo('J4N-740', '38483848', 'C-4', 'Volvo');
+
+DELIMITER $
+CREATE PROCEDURE sp_delete_vehiculo
+	(
+		in _Placa CHAR(11)
+    )
+BEGIN
+	DELETE FROM Vehiculo WHERE placa = _Placa;
+END $
+
+CALL sp_delete_vehiculo('D3H-387');
+SELECT * FROM Vehiculo;
+
+
+
+
+-- TRIGGERS --------------------------------------------------------------------------
+delimiter //
+create trigger tr_before_delete_vehiculo before delete on 
+Vehiculo for each row
+begin
+	delete from Guia_de_remision where placa=old.placa;
+	delete from Ruta where placa=old.placa;
+end//
+
+
+delimiter //
+create trigger tr_before_delete_remitente before delete on 
+Remitente for each row
+begin
+	delete from Guia_de_remision where codigo_rem=old.codigo_rem;
+	delete from Tipo_Remitente where codigo_rem=old.codigo_rem;
+end//
+
+
+delimiter //
+create trigger tr_before_delete_destinatario before delete on 
+Destinatario for each row
+begin
+	delete from Guia_de_remision where codigo_dest=old.codigo_dest;
+	delete from Tipo_Destinatario where codigo_dest=old.codigo_dest;
+end//
