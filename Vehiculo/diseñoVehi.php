@@ -63,7 +63,6 @@ padding: 6px 4px;
 <table border="1">
 
 <tr>
-
 <td colspan="5"align="center"><label>Vehiculo</label></td>
 </tr>
 
