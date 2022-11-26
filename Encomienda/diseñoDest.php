@@ -63,8 +63,6 @@ padding: 6px 4px;
 <table border="1">
 
 <tr>
-
-
 <td colspan="10"align="center"><label>Encomienda</label></td>
 </tr>
 
