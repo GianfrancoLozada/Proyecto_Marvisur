@@ -1,5 +1,4 @@
 CREATE DATABASE GuiaRemisionMarvisur1;
-
 USE GuiaRemisionMarvisur1;
 
 -- Tabla Destinatario
