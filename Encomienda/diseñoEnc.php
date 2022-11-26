@@ -127,7 +127,6 @@ while($mostrar=mysqli_fetch_array($result))
 	<td><?php echo $mostrar['codigo_rem'] ?>
 	<td><?php echo $mostrar['codigo_ruta'] ?>
 
-
 </tr>
 <?php
 }
