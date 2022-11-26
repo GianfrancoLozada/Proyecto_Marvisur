@@ -46,8 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset( $_POST['grabardatosEnc']))
 	{
 		echo "Error: " .$sql."<br>".mysql_error($conn);
 	}
-			
-			
+					
 		}
 		
 		if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['eliminardatosEnc']))
